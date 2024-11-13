@@ -40,7 +40,6 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
-  console.log("first", user.avatar)
   return (
     <SidebarMenu>
       <SidebarMenuItem>
