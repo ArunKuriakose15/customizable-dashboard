@@ -1,3 +1,5 @@
+"use client";
+
 import { DropdownMenu, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { ChevronsUpDown } from "lucide-react";
 import React from "react";
@@ -8,7 +10,7 @@ export function TeamSwitcher({
 }: {
   teams: {
     name: string;
-    logo: string; // Change to string to accept URLs
+    logo: string;
   }[];
 }) {
   const { isMobile } = useSidebar();
@@ -23,11 +25,11 @@ export function TeamSwitcher({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg  text-sidebar-primary-foreground">
-              <img src={activeTeam.logo} alt={activeTeam.name} className="h-auto w-auto" />
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+                <img src={activeTeam.logo} alt={activeTeam.name} className="h-auto w-auto" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">
+                <span className="truncate font-semibold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-blue-500">
                   {activeTeam.name}
                 </span>
               </div>

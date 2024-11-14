@@ -19,29 +19,21 @@ import {
 
 const items = [
   {
-    id: "recents",
-    label: "Recents",
+    id: "Earnings",
+    label: "Earnings",
   },
   {
-    id: "home",
-    label: "Home",
+    id: "Profit",
+    label: "Profit",
   },
   {
-    id: "applications",
-    label: "Applications",
+    id: "Points",
+    label: "Points",
   },
   {
-    id: "desktop",
-    label: "Desktop",
-  },
-  {
-    id: "downloads",
-    label: "Downloads",
-  },
-  {
-    id: "documents",
-    label: "Documents",
-  },
+    id: "Chart",
+    label: "Chart",
+  }
 ] as const;
 
 const FormSchema = z.object({
@@ -54,7 +46,7 @@ function DashboardCheckbox() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["recents", "home"],
+      items: ["Earnings", "home"],
     },
   });
 
