@@ -1,7 +1,6 @@
 "use client"
 
 import { ChevronRight, type LucideIcon } from "lucide-react"
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -17,6 +16,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import DashboardCheckbox from "@/components/DashboardCheckbox"
 
 export function NavMain({
   items,
@@ -62,6 +62,8 @@ export function NavMain({
                     </SidebarMenuSubItem>
                   ))}
                 </SidebarMenuSub>
+                {/* Add DashboardCheckbox under the "Settings" menu item */}
+                {item.title === "Settings" && <DashboardCheckbox />}
               </CollapsibleContent>
             </SidebarMenuItem>
           </Collapsible>
