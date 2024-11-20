@@ -1,4 +1,3 @@
-// components/login.tsx
 'use client'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,8 +20,35 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    axios.post("apiUrl", input).then((response) => {
-    
+
+    if (!input.email || !input.password) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    axios.post("http://localhost:8085/api/users/login", input).then((response) => {
+      if (response.data.status === "success") {
+        sessionStorage.setItem("token", response.data.token)
+        sessionStorage.setItem("user_id", response.data.userData.id)
+        router.push('/dashboard')
+      }
+      else {
+        alert("An unexpected error occurred.");
+      }
+    }).catch((error) => {
+      if (error.response) {
+        const { status, error: errorMessage } = error.response.data;
+        if (status === "Invalid password") {
+          alert("Invalid password.");
+          setInput({ email: "", password: "" });
+        } else if (status === "Invalid email") {
+          alert("Invalid email.");
+          setInput({ email: "", password: "" });
+        } else {
+          alert("An unexpected error occurred.");
+        }
+
+      }
     });
   };
 
@@ -30,7 +56,7 @@ const Login: React.FC = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-sm w-full mx-auto p-6 bg-white shadow-md rounded-md">
         <h2 className="text-xl font-semibold text-center mb-6">Login</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <Label htmlFor="email">Email</Label>
             <Input
