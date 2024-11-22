@@ -1,3 +1,4 @@
+<h1>Customizable-dashboard</h1>
 This repository contains a customizable dashboard application built with modern web technologies. It allows users to toggle the visibility of various widgets, persist their preferences, and authenticate securely.
 
 Features
