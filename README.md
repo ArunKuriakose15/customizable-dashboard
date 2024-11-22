@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This repository contains a customizable dashboard application built with modern web technologies. It allows users to toggle the visibility of various widgets, persist their preferences, and authenticate securely.
 
-## Getting Started
+Features
+1. Dashboard Page UI
+Main Dashboard: Displays multiple widgets with different types of data (e.g., statistics, text).
+Intuitive Layout: Designed for a clean and user-friendly experience using Shadcn UI.
+2. Widget Customization
+Dropdown & Checkboxes: A dropdown lists all available widgets, and checkboxes allow toggling visibility.
+Visibility Toggle: Users can show or hide widgets on the dashboard.
+Preference Persistence: Widget visibility preferences persist across page refreshes.
+3. Backend Integration
+Widget State Management: Backend logic stores widget visibility states in PostgreSQL.
+State Retrieval: Fetches widget visibility states on page load.
+State Updates: Handles updates and ensures preferences are saved efficiently.
+4. Database Management
+PostgreSQL & Drizzle ORM: Database schema and operations are handled with Drizzle ORM for robust and type-safe database management.
+5. Authentication
+User Authentication:
+Secures the application using JWT for session management.
+User-specific widget preferences are stored and retrieved.
+Supports multiple user sessions.
 
-First, run the development server:
+Tech Stack
+Frontend
+Framework: Next.js with TypeScript
+UI Components: Shadcn UI
+Backend
+API: Node.js with Express
+Database: PostgreSQL
+ORM: Drizzle ORM
+Authentication
+Libraries:
+bcryptjs: For password hashing.
+jsonwebtoken (JWT): For secure user session management.
 
-```bash
+Installation
+1. Clone the Repository:
+
+git clone https://github.com/ArunKuriakose15/customizable-dashboard.git  
+cd customizable-dashboard
+
+2. Install Dependencies:
+
+npm install
+
+3. Building for Production
+Build the app for production:
+
+npm run build
+
+4. Running the Application
+Start the development server:
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Setting Up the Backend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Navigate to the Backend Directory:
+cd Backend
 
-## Learn More
+6. Install Dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+7. Setup Environment Variables:
+Create a .env file in the backend directory with the following variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+DB_HOST=YOUR_HOST_NAME   
+DB_USER=YOUR_USER_NAME   
+DB_NAME=YOUR_DATABASE_NAME  
+DB_PORT=YOUR_PORT_NUMBER   
+DB_PASSWORD=YOUR_POSTGRES_PASSWORD  
+JWT_SECRET=YOUR_JWT_SECRET 
 
-## Deploy on Vercel
+8.  Run the Server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+node app.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The server will run on http://localhost:8085.
