@@ -2,8 +2,8 @@ This repository contains a customizable dashboard application built with modern 
 
 Features
 1. Dashboard Page UI
-Main Dashboard: Displays multiple widgets with different types of data (e.g., statistics, text).
-Intuitive Layout: Designed for a clean and user-friendly experience using Shadcn UI.
+<b>Main Dashboard: Displays multiple widgets with different types of data (e.g., statistics, text).
+Intuitive Layout: Designed for a clean and user-friendly experience using Shadcn UI.</b>
 2. Widget Customization
 Dropdown & Checkboxes: A dropdown lists all available widgets, and checkboxes allow toggling visibility.
 Visibility Toggle: Users can show or hide widgets on the dashboard.
