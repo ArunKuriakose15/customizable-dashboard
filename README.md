@@ -73,8 +73,7 @@
           <p><strong>Clone the Repository:</strong></p>
           <pre>
 git clone https://github.com/ArunKuriakose15/customizable-dashboard.git  
-cd customizable-dashboard
-          </pre>
+cd customizable-dashboard</pre>
         </li>
         <li>
           <p><strong>Install Dependencies:</strong></p>
@@ -90,9 +89,8 @@ cd customizable-dashboard
           <pre>
 npm run dev
 # or
-yarn dev
-          </pre>
-          <p>Open <a>http://localhost:3000</a> with your browser to see the result.</p>
+yarn dev</pre>
+          <p>Open <a href="http://localhost:3000">http://localhost:3000</a> with your browser to see the result.</p>
         </li>
  <li>
     <p><strong>Setting Up the Backend</strong></p>
@@ -112,13 +110,12 @@ DB_USER=YOUR_USER_NAME
 DB_NAME=YOUR_DATABASE_NAME  
 DB_PORT=YOUR_PORT_NUMBER   
 DB_PASSWORD=YOUR_POSTGRES_PASSWORD  
-JWT_SECRET=YOUR_JWT_SECRET
-              </pre>
+JWT_SECRET=YOUR_JWT_SECRET</pre>
         </li>
     <li>
         <p>Run the Server:</p>
         <pre>node app.js</pre>
-        <p>The server will run on <a>http://localhost:8085</a> </p>
+        <p>The server will run on <a href="http://localhost:8085">http://localhost:8085</a> </p>
     </li>
 
 
