@@ -72,8 +72,8 @@
         <li>
           <p><strong>Clone the Repository:</strong></p>
           <pre>
-            git clone https://github.com/ArunKuriakose15/customizable-dashboard.git  
-            cd customizable-dashboard
+git clone https://github.com/ArunKuriakose15/customizable-dashboard.git  
+cd customizable-dashboard
           </pre>
         </li>
         <li>
@@ -88,11 +88,11 @@
           <p><strong>Running the Application:</strong></p>
           <p>Start the development server</p>
           <pre>
-            npm run dev
-            # or
-            yarn dev
+npm run dev
+# or
+yarn dev
           </pre>
-          <p>Open http://localhost:3000 with your browser to see the result.</p>
+          <p>Open <a>http://localhost:3000</a> with your browser to see the result.</p>
         </li>
  <li>
     <p><strong>Setting Up the Backend</strong></p>
@@ -107,18 +107,18 @@
     <p>Setup Environment Variables:</p>
         <p>Create a <code>.env</code> file in the backend directory with the following variables:</p>
             <pre>
-                DB_HOST=YOUR_HOST_NAME   
-                DB_USER=YOUR_USER_NAME   
-                DB_NAME=YOUR_DATABASE_NAME  
-                DB_PORT=YOUR_PORT_NUMBER   
-                DB_PASSWORD=YOUR_POSTGRES_PASSWORD  
-                JWT_SECRET=YOUR_JWT_SECRET
+DB_HOST=YOUR_HOST_NAME   
+DB_USER=YOUR_USER_NAME   
+DB_NAME=YOUR_DATABASE_NAME  
+DB_PORT=YOUR_PORT_NUMBER   
+DB_PASSWORD=YOUR_POSTGRES_PASSWORD  
+JWT_SECRET=YOUR_JWT_SECRET
               </pre>
         </li>
     <li>
         <p>Run the Server:</p>
         <pre>node app.js</pre>
-        <p>The server will run on http://localhost:8085 </p>
+        <p>The server will run on <a>http://localhost:8085</a> </p>
     </li>
 
 
