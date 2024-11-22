@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useWidgetContext } from "@/app/contexts/WidgetContext";
 
 // Schema for form validation
 const FormSchema = z.object({
@@ -29,6 +30,7 @@ const FormSchema = z.object({
 
 function DashboardCheckbox() {
   const router = useRouter();
+  const { refreshWidgets } = useWidgetContext();
   const [widgets, setWidgets] = useState<
     { widgetId: number; widgetLabel: string; is_visible: boolean }[]
   >([]);
@@ -74,23 +76,20 @@ function DashboardCheckbox() {
     }
   }, [widgets, form]);
 
-  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    const updates = data.items.map(({ widgetId, isVisible }) => ({
-      widgetId,
-      isVisible,
-    }));
-
-    const userId = sessionStorage.getItem("user_id");
-    const token = sessionStorage.getItem("token");
-    const payload = { userId, updates };
-
+  const onSubmit = async (data: any) => {
     try {
+      const userId = sessionStorage.getItem("user_id");
+      const token = sessionStorage.getItem("token");
+
       await axios.put(
-        "http://localhost:8085/api/widget/update-widget-preferences/", payload, { headers: { token: token } });
-      alert("Preferences updated successfully!");
-      window.location.reload();
+        "http://localhost:8085/api/widget/update-widget-preferences/",
+        { userId, updates: data.items },
+        { headers: { token } }
+      );
+
+      refreshWidgets(); // Notify the context to refresh
     } catch (error) {
-      console.error("Error updating widgets:", error);
+      console.error("Error updating preferences:", error);
     }
   };
 

@@ -1,24 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { AppSidebar } from "@/components/app-sidebar";
 import EarningCard from "@/components/EarningCard";
 import { PointCard } from "@/components/PointCard";
 import ProfitCard from "@/components/ProfitCard";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { ViewChart } from "@/components/ViewChart";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import axios from "axios";
+import { Separator } from "@radix-ui/react-separator";
+import { useWidgetContext } from "../contexts/WidgetContext";
 
 export default function Page() {
   const [visibleWidgets, setVisibleWidgets] = useState({
@@ -28,14 +20,20 @@ export default function Page() {
     ViewChart: false,
   });
 
+  const { refreshWidgets } = useWidgetContext();
+
   useEffect(() => {
     const fetchWidgets = async () => {
       try {
-        const userId = sessionStorage.getItem("user_id")
-      const token= sessionStorage.getItem("token")
-        const response = await axios.get(`http://localhost:8085/api/widget/widget-preferences/${userId}`,{ headers: { token: token } });
+        const userId = sessionStorage.getItem("user_id");
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(
+          `http://localhost:8085/api/widget/widget-preferences/${userId}`,
+          { headers: { token } }
+        );
+
         if (response.data.status === "success") {
-          const widgets = response.data.data.reduce((acc, widget) => {
+          const widgets = response.data.data.reduce((acc: { [x: string]: any; }, widget: { widgetName: string | number; is_visible: any; }) => {
             acc[widget.widgetName] = widget.is_visible;
             return acc;
           }, {});
@@ -47,7 +45,7 @@ export default function Page() {
     };
 
     fetchWidgets();
-  }, []);
+  }, [refreshWidgets]);
 
   return (
     <SidebarProvider>
